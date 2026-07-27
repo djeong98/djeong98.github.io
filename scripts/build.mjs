@@ -247,11 +247,11 @@ const home = layout({
         <a class="inline-link reveal" href="teaching.html">View teaching history ${icon("arrow")}</a>
       </div>
       <div class="class-grid reveal">
-        <a class="class-card class-card-featured" href="https://github.com/djeong98/sitp2026-lss-gr" target="_blank" rel="noopener">
+        <a class="class-card class-card-featured" href="https://djeong98.github.io/sitp2026-lss-gr/" target="_blank" rel="noopener">
           <span class="class-term">SITP · Summer 2026</span>
           <h3>Large-Scale Structure Observables in General Relativity</h3>
           <p>Galaxy clustering, cosmic rulers, and local tides.</p>
-          <span class="class-link">Student notes on GitHub ${icon("external")}</span>
+          <span class="class-link">Read the student notes ${icon("external")}</span>
         </a>
         <a class="class-card" href="https://sites.psu.edu/cosmology/" target="_blank" rel="noopener">
           <span class="class-term">Fall 2026 · ASTRO 545</span>
@@ -412,13 +412,13 @@ const teaching = layout({
         <div class="section-label"><span>Courses</span></div>
         <h2 class="display-heading reveal">From black holes<br>to cosmic structure.</h2>
       </div>
-      <a class="course-feature reveal" href="https://github.com/djeong98/sitp2026-lss-gr" target="_blank" rel="noopener">
+      <a class="course-feature reveal" href="https://djeong98.github.io/sitp2026-lss-gr/" target="_blank" rel="noopener">
         <span class="class-term">Featured notes · SITP 2026</span>
         <div>
           <h3>Large-Scale Structure Observables in General Relativity</h3>
           <p>Expanded student notes on galaxy clustering, cosmic rulers, and local tides.</p>
         </div>
-        <span class="course-feature-link">Open on GitHub ${icon("external")}</span>
+        <span class="course-feature-link">Read the notes ${icon("external")}</span>
       </a>
       <div class="course-list reveal">
         ${clean(bySlug.classes)
