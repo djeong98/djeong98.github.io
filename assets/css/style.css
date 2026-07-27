@@ -454,8 +454,11 @@ select {
   z-index: 4;
   width: 76px;
   height: 76px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   color: var(--ink);
   background: var(--coral);
   border: 7px solid var(--ink);
