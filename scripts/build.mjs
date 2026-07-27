@@ -28,6 +28,11 @@ const icon = (name) => {
 function clean(html) {
   return html
     .replaceAll('target="_blanck"', 'target="_blank"')
+    .replaceAll("Febluary", "February")
+    .replace(
+      /href="https:\/\/arxiv\.org\/abs\/\d{4}\.xxxxx"([^>]*)>\[arXiv:(\d{4}\.\d+)\]/g,
+      'href="https://arxiv.org/abs/$2"$1>[arXiv:$2]',
+    )
     .replace(
       /<a href=""[^>]*>(.*?)<\/a>/g,
       '<span class="publication-status">$1</span>',
@@ -327,7 +332,7 @@ const publications = layout({
     <section class="page-hero publications-hero">
       <div class="page-hero-inner">
         <p class="eyebrow light"><span></span> Research archive</p>
-        <h1>${journalItems.length} ways to<br><em>question the cosmos.</em></h1>
+        <h1>Exploring the cosmos<br><em>through theory and data.</em></h1>
         <p>Refereed journal articles spanning cosmology, large-scale structure, galaxy surveys, dark matter, and gravitational waves.</p>
       </div>
     </section>
