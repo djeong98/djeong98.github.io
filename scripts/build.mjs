@@ -44,6 +44,9 @@ function clean(html) {
 }
 
 const manualPublications = [
+  `[118] Jeongin Moon, Eiichiro Komatsu, Robin Ciardullo, Olivia Curtis, Dustin Davis, Daniel J. Farrow, Karl Gebhardt, Caryl Gronwall, Laura Herold, Gary J. Hill, <strong>Donghui Jeong</strong>, Chenxu Liu, Maja Lujan Niemeyer, Erin Mentuch Cooper, Shiro Mukae, Shun Saito, Ariel G. Sánchez, and Donald P. Schneider<br />
+<em>HETDEX [O II] galaxies at z ≤ 0.48: Volume-limited samples and their power spectra</em><br />
+<span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.08453" target="_blank" rel="noopener">[arXiv:2607.08453]</a>`,
   `[117] Tristan S. Weaver, David Radice, <strong>Donghui Jeong</strong>, and Victor Liu<br />
 <em>Gravitational Wave Modeling of White-Dwarf–Compact-Object Binaries and Observational Outlook</em><br />
 <span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.24951" target="_blank" rel="noopener">[arXiv:2607.24951]</a>`,
