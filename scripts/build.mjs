@@ -43,6 +43,12 @@ function clean(html) {
     );
 }
 
+const manualPublications = [
+  `[117] Tristan S. Weaver, David Radice, <strong>Donghui Jeong</strong>, and Victor Liu<br />
+<em>Gravitational Wave Modeling of White-Dwarf–Compact-Object Binaries and Observational Outlook</em><br />
+<span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.24951" target="_blank" rel="noopener">[arXiv:2607.24951]</a>`,
+];
+
 function header(active) {
   const nav = navItems
     .map(
@@ -125,9 +131,10 @@ function extractPublications() {
   const html = clean(bySlug.publications);
   const paragraphs = [...html.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((match) => match[1]);
   const firstEssay = paragraphs.findIndex((p) => /semi-Public article/i.test(p));
-  const journalItems = paragraphs
-    .slice(1, firstEssay)
-    .filter((p) => /^\s*\[\d+\]/.test(p));
+  const journalItems = [
+    ...manualPublications,
+    ...paragraphs.slice(1, firstEssay).filter((p) => /^\s*\[\d+\]/.test(p)),
+  ];
   const essays = paragraphs.slice(firstEssay);
 
   return { journalItems, essays };
