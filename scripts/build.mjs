@@ -44,12 +44,12 @@ function clean(html) {
 }
 
 const manualPublications = [
-  `[118] Jeongin Moon, Eiichiro Komatsu, Robin Ciardullo, Olivia Curtis, Dustin Davis, Daniel J. Farrow, Karl Gebhardt, Caryl Gronwall, Laura Herold, Gary J. Hill, <strong>Donghui Jeong</strong>, Chenxu Liu, Maja Lujan Niemeyer, Erin Mentuch Cooper, Shiro Mukae, Shun Saito, Ariel G. Sánchez, and Donald P. Schneider<br />
-<em>HETDEX [O II] galaxies at z ≤ 0.48: Volume-limited samples and their power spectra</em><br />
-<span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.08453" target="_blank" rel="noopener">[arXiv:2607.08453]</a>`,
-  `[117] Tristan S. Weaver, David Radice, <strong>Donghui Jeong</strong>, and Victor Liu<br />
+  `[118] Tristan S. Weaver, David Radice, <strong>Donghui Jeong</strong>, and Victor Liu<br />
 <em>Gravitational Wave Modeling of White-Dwarf–Compact-Object Binaries and Observational Outlook</em><br />
 <span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.24951" target="_blank" rel="noopener">[arXiv:2607.24951]</a>`,
+  `[116] Jeongin Moon, Eiichiro Komatsu, Robin Ciardullo, Olivia Curtis, Dustin Davis, Daniel J. Farrow, Karl Gebhardt, Caryl Gronwall, Laura Herold, Gary J. Hill, <strong>Donghui Jeong</strong>, Chenxu Liu, Maja Lujan Niemeyer, Erin Mentuch Cooper, Shiro Mukae, Shun Saito, Ariel G. Sánchez, and Donald P. Schneider<br />
+<em>HETDEX [O II] galaxies at z ≤ 0.48: Volume-limited samples and their power spectra</em><br />
+<span class="publication-status">2026, arXiv preprint</span> <a href="https://arxiv.org/abs/2607.08453" target="_blank" rel="noopener">[arXiv:2607.08453]</a>`,
 ];
 
 function header(active) {
@@ -134,10 +134,18 @@ function extractPublications() {
   const html = clean(bySlug.publications);
   const paragraphs = [...html.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((match) => match[1]);
   const firstEssay = paragraphs.findIndex((p) => /semi-Public article/i.test(p));
-  const journalItems = [
-    ...manualPublications,
-    ...paragraphs.slice(1, firstEssay).filter((p) => /^\s*\[\d+\]/.test(p)),
+  const importedItems = paragraphs
+    .slice(1, firstEssay)
+    .filter((p) => /^\s*\[\d+\]/.test(p));
+  const orderedItems = [
+    manualPublications[0],
+    importedItems[0],
+    manualPublications[1],
+    ...importedItems.slice(1),
   ];
+  const journalItems = orderedItems.map((item, index) =>
+    item.replace(/^\s*\[\d+\]/, `[${orderedItems.length - index}]`),
+  );
   const essays = paragraphs.slice(firstEssay);
 
   return { journalItems, essays };
