@@ -21,6 +21,7 @@ In the first six weeks you apply it to problems whose answers are known. In the 
 Class time is not spent on lectures. You read, you solve eight problems a week, and in each meeting four of you work them at the blackboard while the other four take them apart. Use AI freely while you prepare; the blackboard is where it is established whether the work is yours.
 
 <div class="cards">
+<div class="card"><a href="intro.html">First class</a><p>The slides from week 1: what the course is, how a class runs, and how it is graded.</p></div>
 <div class="card"><a href="syllabus.html">Syllabus</a><p>What the course is, how it runs, how it is graded, and what to read.</p></div>
 <div class="card"><a href="topics.html">Topics &amp; Objectives</a><p>The fifteen weeks, and what you should be able to do with each.</p></div>
 <div class="card"><a href="assignments.html">Assignments</a><p>Deadlines, submission format, and how solutions should be presented.</p></div>
