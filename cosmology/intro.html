@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c3b">
+<title>How this course works — ASTRO/PHYS 545</title>
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<script src="assets/mathjax-config.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root{
+  --ink:#102c3b;--ink-deep:#0a202c;--ocean:#174d62;--teal:#1f6f78;
+  --aqua:#7fc8bd;--coral:#f28a6e;--cream:#f4f1e9;--paper:#fbfaf6;
+  --line:rgba(16,44,59,.16);--muted:#62727a;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Avenir Next",Avenir,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink-deep);font-family:var(--sans);color:var(--ink);
+  -webkit-font-smoothing:antialiased}
+.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck::-webkit-scrollbar{display:none}
+.deck{scrollbar-width:none}
+
+section{height:100vh;scroll-snap-align:start;display:flex;align-items:center;
+  justify-content:center;padding:5vh 6vw;background:var(--paper);position:relative}
+.inner{width:100%;max-width:1000px}
+section.dark{background:var(--ink);color:var(--cream)}
+section.dark h2,section.dark h1{color:#fff}
+section.dark .eyebrow{color:var(--aqua)}
+section.dark strong{color:var(--aqua)}
+section.dark .note{color:rgba(244,241,233,.62)}
+
+.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);font-weight:600;margin-bottom:1.4rem}
+h1{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.08;letter-spacing:-.025em;
+  font-weight:600;color:var(--ink)}
+h1 em{font-style:italic;font-family:var(--serif);font-weight:400;color:var(--aqua)}
+h2{font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.16;letter-spacing:-.02em;
+  font-weight:600;color:var(--ink);margin-bottom:1.6rem}
+h3{font-size:clamp(1.05rem,1.9vw,1.35rem);font-weight:600;color:var(--ocean);
+  margin-bottom:.5rem}
+p{font-size:clamp(1rem,1.55vw,1.22rem);line-height:1.6;max-width:52ch;
+  margin-bottom:1rem;font-family:var(--serif)}
+p.lede{font-size:clamp(1.1rem,2vw,1.5rem);color:var(--muted);max-width:46ch}
+.note{font-family:var(--sans);font-size:.9rem;color:var(--muted);max-width:60ch}
+strong{font-weight:600;color:var(--ocean)}
+ul{list-style:none;max-width:60ch}
+li{font-size:clamp(.98rem,1.5vw,1.18rem);line-height:1.55;margin-bottom:.85rem;
+  padding-left:1.5rem;position:relative;font-family:var(--serif)}
+li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;
+  border-radius:50%;background:var(--aqua)}
+section.dark li::before{background:var(--coral)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.4rem 1.5rem}
+section.dark .box{background:rgba(255,255,255,.05);border-color:rgba(127,200,189,.22)}
+.box h3{margin-bottom:.4rem}
+.box p{font-size:.95rem;margin:0;font-family:var(--sans);color:var(--muted)}
+section.dark .box p{color:rgba(244,241,233,.72)}
+
+/* timing bar */
+.timing{margin:2rem 0 1rem}
+.bar{display:flex;height:52px;border-radius:8px;overflow:hidden;
+  border:1px solid var(--line);font-size:.72rem;font-weight:600;letter-spacing:.04em}
+.bar div{display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
+.b1{background:var(--ocean);flex:5}
+.b2{background:var(--teal);flex:15}
+.b3{background:#2a8189;flex:15}
+.b4{background:var(--teal);flex:15}
+.b5{background:#2a8189;flex:15}
+.b6{background:var(--aqua);color:var(--ink)!important;flex:10}
+.legend{display:flex;gap:1.6rem;margin-top:.9rem;flex-wrap:wrap;
+  font-size:.82rem;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:.4rem}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+table{width:100%;border-collapse:collapse;font-size:clamp(.82rem,1.15vw,.98rem)}
+th{text-align:left;padding:.5rem .7rem;color:var(--muted);font-weight:600;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  border-bottom:2px solid var(--line)}
+td{padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+section.dark th{color:var(--aqua);border-bottom-color:rgba(127,200,189,.3)}
+section.dark td{border-bottom-color:rgba(255,255,255,.1)}
+td.w{white-space:nowrap;font-weight:600;color:var(--ocean)}
+section.dark td.w{color:var(--aqua)}
+td.n{text-align:right;white-space:nowrap;font-weight:600;color:var(--ocean)}
+
+.big{font-size:clamp(3rem,9vw,7rem);line-height:1;font-weight:600;
+  letter-spacing:-.04em;color:var(--ocean)}
+section.dark .big{color:var(--aqua)}
+.quote{font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.2rem,2.6vw,1.9rem);line-height:1.45;max-width:26ch}
+
+.arc{display:flex;align-items:stretch;gap:0;margin:2rem 0;flex-wrap:wrap}
+.arc-step{flex:1;min-width:150px;padding:1.2rem 1.3rem;border-left:3px solid var(--aqua)}
+.arc-step:first-child{border-left-color:var(--ocean)}
+.arc-step:last-child{border-left-color:var(--coral)}
+.arc-step h3{font-size:.98rem;margin-bottom:.3rem}
+.arc-step p{font-size:.88rem;font-family:var(--sans);color:var(--muted);margin:0}
+
+/* chrome */
+.hud{position:fixed;bottom:1.1rem;right:1.4rem;z-index:5;
+  font-size:.74rem;letter-spacing:.1em;color:var(--muted);
+  background:rgba(251,250,246,.9);padding:.3rem .7rem;border-radius:20px;
+  border:1px solid var(--line)}
+.hint{position:fixed;bottom:1.1rem;left:1.4rem;z-index:5;font-size:.74rem;
+  color:var(--muted);background:rgba(251,250,246,.9);padding:.3rem .7rem;
+  border-radius:20px;border:1px solid var(--line);transition:opacity .5s}
+.hint.gone{opacity:0}
+.home{position:fixed;top:1.1rem;right:1.4rem;z-index:5;font-size:.74rem;
+  color:var(--muted);text-decoration:none;background:rgba(251,250,246,.9);
+  padding:.3rem .7rem;border-radius:20px;border:1px solid var(--line)}
+.home:hover{color:var(--teal)}
+
+@media(max-width:760px){
+  .two,.three{grid-template-columns:1fr;gap:1.4rem}
+  section{padding:6vh 7vw}
+  .bar{height:auto;flex-direction:column}
+  .bar div{padding:.5rem;flex:none!important}
+}
+@media print{
+  html,body{height:auto;background:#fff}
+  .deck{height:auto;overflow:visible}
+  section{height:auto;min-height:0;page-break-after:always;padding:2.5cm 2cm;
+    background:#fff!important;color:#000!important}
+  section.dark h1,section.dark h2{color:var(--ink)!important}
+  .hud,.hint,.home{display:none}
+}
+</style>
+</head>
+<body>
+<a class="home" href="index.html">Course site →</a>
+<div class="hint" id="hint">← → or space to move</div>
+<div class="hud"><span id="cur">1</span> / <span id="tot">19</span></div>
+
+<div class="deck" id="deck">
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">ASTRO/PHYS 545 · Week 1</p>
+    <h1>Cosmology, and<br>how to tell whether<br>a claim is <em>right.</em></h1>
+    <p class="note" style="margin-top:2.5rem">Donghui Jeong · Department of Astronomy &amp; Astrophysics · Penn State</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Start here</p>
+    <h2>Cosmology has a short list of<br>very well measured numbers.</h2>
+    <p class="lede">It is easy to mistake them for the subject. Consider what the precision is hiding.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <table>
+      <tr><td class="n">1%</td><td>We know the <strong>dark matter</strong> density this well.<br>We do not know what dark matter is.</td></tr>
+      <tr><td class="n">better</td><td>We know the <strong>dark energy</strong> density better than that.<br>We have no account of it whatsoever.</td></tr>
+      <tr><td class="n">20 yr</td><td>We knew the <strong>baryon</strong> density to a per cent for twenty years<br>while unable to say where most of the baryons were.</td></tr>
+      <tr><td class="n">1990</td><td>"The CMB is a <strong>blackbody</strong>" is a bound measured in 1990,<br>never improved, sitting three orders of magnitude above<br>the distortion $\Lambda$CDM predicts.</td></tr>
+    </table>
+    <p class="note" style="margin-top:2rem">Every one of these is a statement about what the universe contains or how it began. The third digit matters because it separates things that could be true.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">The premise</p>
+    <h2>AI now produces derivations, code and<br>literature summaries of high apparent quality.</h2>
+    <p class="lede" style="color:rgba(244,241,233,.75)">So the scarce skill is no longer generating that material.<br>It is judging whether it is correct.</p>
+    <p class="note" style="margin-top:2rem">Carrying a parameter without its physical content is exactly the part of the work an AI already does better than you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">What we practise</p>
+    <h2 style="margin-bottom:2.5rem">One loop, every week,<br>for fifteen weeks.</h2>
+    <p class="quote" style="max-width:40ch;color:var(--ocean)">Think → Ask AI → Inspect → Challenge → Verify → Revise → Synthesize → Ask the next question.</p>
+    <p class="note" style="margin-top:2.5rem">Weeks 2–6: on problems whose answers are known.<br>Second half of the term: on a question nobody has answered.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Consequence</p>
+    <h2>This is not a lecture course.</h2>
+    <div class="two" style="margin-top:2rem">
+      <div>
+        <h3>What you do before class</h3>
+        <p>Read the notes. Solve eight problems. Use AI freely.</p>
+      </div>
+      <div>
+        <h3>What happens in class</h3>
+        <p>Four of you work those problems at the blackboard. The other four take them apart. I ask what each line costs.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:2.5rem">Today is the only lecture.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">75 minutes</p>
+    <h2 style="margin-bottom:1rem">A class, minute by minute.</h2>
+    <div class="timing">
+      <div class="bar">
+        <div class="b1">5<br>orient</div>
+        <div class="b2">15 · problem 1</div>
+        <div class="b3">15 · problem 2</div>
+        <div class="b4">15 · problem 3</div>
+        <div class="b5">15 · problem 4</div>
+        <div class="b6">10<br>synth</div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--ocean)"></i> Draw problems and roles</span>
+        <span><i class="sw" style="background:var(--teal)"></i> 8 min board · 3 min challenger · 4 min me</span>
+        <span><i class="sw" style="background:var(--aqua)"></i> What today actually showed</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top:1.5rem">Which of the four problems you get is drawn at the start of class. So you prepare all four.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">Two roles, every class</p>
+    <div class="two">
+      <div class="box">
+        <h3 style="color:var(--aqua)">Presenter · 4 of you</h3>
+        <p>Reproduce the argument on the board by hand. State where each assumption enters. Mark what you could not resolve.</p>
+      </div>
+      <div class="box">
+        <h3 style="color:var(--aqua)">Challenger · 4 of you</h3>
+        <p>Find the weakest step and press it. A question that only asks for repetition does not count.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:2rem">Roles swap between Tuesday and Thursday. Everyone has a job in every class. With eight of us there is no back row.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Say this out loud once</p>
+    <h2 style="max-width:20ch">Getting stuck at the board is course material, not failure.</h2>
+    <p style="margin-top:1.5rem">Thirty seconds on your own. Then the floor opens. Then I step in. Where the argument broke gets written down, and that is where your repair starts.</p>
+    <p class="note" style="margin-top:1.5rem"><strong>Errors made and worked through at the board are not penalised. Reciting a memorised solution is.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">The week</p>
+    <h2 style="margin-bottom:1.4rem">Solved once, digested twice.</h2>
+    <table>
+      <tr><td class="w">Mon noon</td><td>Solutions due, all eight problems</td></tr>
+      <tr><td class="w">Tue</td><td>Class · problems 1–4</td></tr>
+      <tr><td class="w">Wed</td><td>No class. Repair what Tuesday exposed</td></tr>
+      <tr><td class="w">Thu</td><td>Class · problems 5–8</td></tr>
+      <tr><td class="w">Fri</td><td>Final version, carrying its repair history</td></tr>
+    </table>
+    <p class="note" style="margin-top:1.6rem">The final version shows what changed and why you had not caught it. <strong>That history is the graded part.</strong> A solution that was wrong and correctly diagnosed scores above one that was right and unexamined.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">Written without AI</p>
+    <h2>Two lines, one at each end<br>of every submission.</h2>
+    <div class="two" style="margin-top:2rem">
+      <div class="box">
+        <h3 style="color:var(--aqua)">Opening</h3>
+        <p>The point in your solutions you were least able to verify.</p>
+      </div>
+      <div class="box">
+        <h3 style="color:var(--aqua)">Closing</h3>
+        <p>Where AI was wrong, incomplete, or confidently vague, and how you found out. If it was not, say so.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:2rem">These two lines are the only written record this course keeps of how you work. I read the eight opening lines before every Tuesday.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Three times · weeks 2, 4, 6</p>
+    <h2>Problem sets are the things<br>that do not fit on a blackboard.</h2>
+    <p>A board segment is eight minutes, so the weekly problems never ask you to sustain a calculation across an afternoon. One deep problem does.</p>
+    <ul style="margin-top:1.5rem">
+      <li><strong>Before AI, ten minutes, written.</strong> Your strategy, the equations you expect to need, what you do not know.</li>
+      <li><strong>Work with AI.</strong> No restrictions.</li>
+      <li><strong>Solution.</strong> AI may draft it. You verify it and it goes out under your name.</li>
+      <li><strong>Reflection, without AI.</strong> Where it was wrong, what you changed, how you knew.</li>
+    </ul>
+    <p class="note" style="margin-top:1.4rem">Step 4 is what is assessed. Step 3 is not. Step 1 exists so that step 4 has something to compare against.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">The arc</p>
+    <h2 style="margin-bottom:.5rem">What you check AI against<br>is withdrawn in stages.</h2>
+    <div class="arc">
+      <div class="arc-step"><h3>Weeks 2–6</h3><p>The course lecture notes. A document that is correct, comparable line by line.</p></div>
+      <div class="arc-step"><h3>Weeks 7–13</h3><p>Papers. Authoritative in a weaker sense, and they disagree with each other.</p></div>
+      <div class="arc-step"><h3>The project</h3><p>Your own map, and nothing else.</p></div>
+    </div>
+    <p class="note" style="margin-top:1.2rem">What is not withdrawn is the standard in this room. It is the same in week 15 as in week 1.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">Weeks 7–9 and 12–13</p>
+    <h2>Ten subjects, ten maps.</h2>
+    <div class="two">
+      <div>
+        <h3 style="color:var(--aqua)">Constituents</h3>
+        <p class="note">photons · baryons · neutrinos · dark matter · dark energy · initial conditions</p>
+        <p class="note" style="margin-top:.6rem">In order of how well we know them, so the sessions open as they go.</p>
+      </div>
+      <div>
+        <h3 style="color:var(--aqua)">Probes</h3>
+        <p class="note">DESI, HETDEX · Roman, Euclid, LSST · LVK, LISA, PTA · SPHEREx</p>
+        <p class="note" style="margin-top:.6rem">What will sharpen those claims, or break them.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:2rem">Four segments each: <strong>the claim · the measurement · the assumptions · the threat.</strong> The board fills into an actual map. One rule: any claim you attribute to a paper, you can point to in that paper.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">The project</p>
+    <h2>Find a gap. Make it a question.<br>Produce the smallest piece of evidence.</h2>
+    <table style="margin-top:1.5rem">
+      <tr><td class="w">End of week 9</td><td>A research question, approved before I leave</td></tr>
+      <tr><td class="w">Weeks 10–11</td><td>Clinic with the TA. Build a prototype</td></tr>
+      <tr><td class="w">Weeks 12–13</td><td>Refine it while the class keeps mapping</td></tr>
+      <tr><td class="w">Weeks 14–15</td><td>Twenty minutes, and fifteen of questions</td></tr>
+    </table>
+    <p class="note" style="margin-top:1.6rem">The prototype is small by design. Reproduce one published figure. Check one approximation numerically. Analyse a subset of public data. The question is never whether the code runs.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">The question the project actually asks</p>
+    <h2 class="quote" style="max-width:24ch;font-size:clamp(1.5rem,3.4vw,2.4rem)">Can you use AI to construct a scientific calculation and establish that its result is trustworthy?</h2>
+    <p class="note" style="margin-top:2.5rem">You will have answered this four times by then, against the Friedmann equations, three distance measures, the thermal history, and slow roll. The difference in week 12 is that nobody knows the answer.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Grading, and one rule about showing up</p>
+    <div class="two">
+      <div>
+        <table>
+          <tr><td>Weekly problems and maps</td><td class="n">25%</td></tr>
+          <tr><td>Participation: board, challenger, attendance</td><td class="n">30%</td></tr>
+          <tr><td>Problem sets (3)</td><td class="n">15%</td></tr>
+          <tr><td>Final project</td><td class="n">30%</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Attendance</h3>
+        <p class="note">With eight of us there is no slack. If you are not here, one of the four problems has no presenter and a classmate covers it. Absence is paid for by the other seven before it is paid for by you.</p>
+        <p class="note" style="margin-top:.8rem">Tell me before the Monday deadline and you come out of the draw, no penalty. Volunteer to cover for someone and you gain a credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="inner">
+    <p class="eyebrow">AI policy, in full</p>
+    <h2>Use it. I encourage it.<br>Or don't, if you would rather<br>work it out yourself.</h2>
+    <p class="note" style="margin-top:1.8rem;max-width:56ch">Solutions, derivations, code and literature analysis may be AI-generated in whole or in part. This course is not interested in which route you took. It is interested in whether you can defend where you arrived. Say in your closing line which problems you did which way.</p>
+    <p class="note" style="margin-top:1.2rem"><strong>Two exceptions:</strong> the opening and closing lines, and the reflection in each problem set. Those are where your judgment rather than your output is visible.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="eyebrow">Before Thursday</p>
+    <h2 style="margin-bottom:1.4rem">One problem. Not graded.</h2>
+    <div class="box" style="max-width:60ch">
+      <p style="font-family:var(--serif);font-size:1.08rem;color:var(--ink);line-height:1.6">
+      Estimate the temperature at which the universe became neutral.<br><br>
+      Two numbers are available to you: the binding energy of hydrogen, 13.6 eV, and the ratio of photons to baryons, roughly $10^9$. Use both, and say what each one does.<br><br>
+      Then say what you would need in order to do better than an estimate.</p>
+    </div>
+    <p class="note" style="margin-top:1.6rem">Open and close it with the two lines. On Thursday I will work it at the board under the rules you just heard, and you will get to take it apart.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=deck.querySelectorAll('section');
+  var cur=document.getElementById('cur');
+  document.getElementById('tot').textContent=slides.length;
+  var i=0, hint=document.getElementById('hint'), hid=false;
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides[i].scrollIntoView({behavior:'smooth'});
+    cur.textContent=i+1;
+    if(!hid){hint.classList.add('gone');hid=true;}
+  }
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(i-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+    else if(e.key==='f'){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}
+  });
+  var t;
+  deck.addEventListener('scroll',function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      var n=Math.round(deck.scrollTop/window.innerHeight);
+      if(n!==i){i=n;cur.textContent=Math.min(i+1,slides.length);}
+    },90);
+  });
+})();
+</script>
+</body>
+</html>

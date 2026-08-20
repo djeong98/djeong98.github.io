@@ -1,7 +1,9 @@
 # Syllabus
 ### ASTRO/PHYS 545: Cosmology — AI-assisted scientific reasoning
 
-**Term:** [Semester, Year] | **Meetings:** Tue/Thu, 75 min | **Enrollment:** 8 | **Instructor:** [Name] | **TA:** [Name]
+**Term:** Fall 2026 | **Meetings:** Tue/Thu 9:05 – 10:20 am, 541 Davey | **Enrollment:** 8  
+**Instructor:** Donghui Jeong, 518 Davey, [djeong@psu.edu](mailto:djeong@psu.edu) · Office hours Tue/Thu 10:20 – 11:00 am  
+**TA:** Tristan Weaver, [tsw5383@psu.edu](mailto:tsw5383@psu.edu) · Office hours Thu 3:00 – 4:00 pm and Fri 10:00 – 11:00 am, 441 Davey
 
 ---
 

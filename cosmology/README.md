@@ -30,5 +30,5 @@ nav highlights the current page from a metadata flag set in `build.sh`.
   them. To point the Teaching page at this site rather than at
   `sites.psu.edu/cosmology`, change the entry in that JSON and re-run the
   parent build.
-- Placeholders to fill before the term: TA name and hours, Canvas link,
-  and the term line at the top of the syllabus.
+- Remaining placeholders: the Canvas course link in `index.md`, and the
+  connection details for the TA's online office hours in the first few weeks.

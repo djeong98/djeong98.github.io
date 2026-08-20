@@ -6,7 +6,8 @@
 <p><strong>Instructor</strong> Prof. Donghui Jeong · 518 Davey · <a href="mailto:djeong@psu.edu">djeong@psu.edu</a></p>
 <p><strong>Class hours</strong> Tue/Thu 9:05 – 10:20 am · Rm 541 Davey</p>
 <p><strong>Office hours</strong> Tue/Thu 10:20 – 11:00 am</p>
-<p><strong>Teaching assistant</strong> [Name] · [email] · Office hours [time], Rm 442 Davey</p>
+<p><strong>Teaching assistant</strong> Tristan Weaver · <a href="mailto:tsw5383@psu.edu">tsw5383@psu.edu</a></p>
+<p><strong>TA office hours</strong> Thu 3:00 – 4:00 pm · Fri 10:00 – 11:00 am · TA office, 441 Davey<br><em>Online for the first few weeks; connection details to follow.</em></p>
 <p><strong>Canvas</strong> <a href="https://psu.instructure.com/">psu.instructure.com</a></p>
 </div>
 
@@ -19,6 +20,8 @@ The course trains one loop, repeatedly:
 In the first six weeks you apply it to problems whose answers are known. In the project that runs through the second half of the term, you apply it to a question nobody has answered.
 
 Class time is not spent on lectures. You read, you solve eight problems a week, and in each meeting four of you work them at the blackboard while the other four take them apart. Use AI freely while you prepare; the blackboard is where it is established whether the work is yours.
+
+Both TA slots sit inside the repair window: Thursday afternoon is a few hours after Thursday's class, and Friday morning is before the final version is due. That is what they are for. Tristan also takes drop-ins, with or without an appointment.
 
 <div class="cards">
 <div class="card"><a href="intro.html">First class</a><p>The slides from week 1: what the course is, how a class runs, and how it is graded.</p></div>
